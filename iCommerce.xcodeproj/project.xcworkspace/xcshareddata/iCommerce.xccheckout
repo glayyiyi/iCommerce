@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>27546EBA-00F0-4F5F-83A0-79E811BCCB84</string>
+	<key>IDESourceControlProjectName</key>
+	<string>iCommerce</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>CF1674C3-9377-44B8-89D7-8BBD1C0230F8</key>
+		<string>https://github.com/glayyiyi/iCommerce.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>iCommerce.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>CF1674C3-9377-44B8-89D7-8BBD1C0230F8</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/glayyiyi/iCommerce.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>CF1674C3-9377-44B8-89D7-8BBD1C0230F8</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>CF1674C3-9377-44B8-89D7-8BBD1C0230F8</string>
+			<key>IDESourceControlWCCName</key>
+			<string>iCommerce</string>
+		</dict>
+	</array>
+</dict>
+</plist>
