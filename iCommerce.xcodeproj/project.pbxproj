@@ -72,13 +72,12 @@
 		6B1A386D18AE80E200A8C65E /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1A386C18AE80E200A8C65E /* OpenAL.framework */; };
 		6B1A387118AE812E00A8C65E /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1A387018AE812E00A8C65E /* MediaPlayer.framework */; };
 		6B1A388718AF51EE00A8C65E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1A388618AF51EE00A8C65E /* StoreKit.framework */; };
+		6B8903A218B0DE02009BFB0F /* CDVLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B8903A118B0DE02009BFB0F /* CDVLogger.m */; };
 		6BAC94A618AE721000DC4A4D /* www in Resources */ = {isa = PBXBuildFile; fileRef = 6BAC94A518AE721000DC4A4D /* www */; };
 		6BB23D9018ABCD1A00F87704 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BB23D8F18ABCD1A00F87704 /* Foundation.framework */; };
 		6BB23D9218ABCD1A00F87704 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BB23D9118ABCD1A00F87704 /* CoreGraphics.framework */; };
 		6BB23D9418ABCD1A00F87704 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BB23D9318ABCD1A00F87704 /* UIKit.framework */; };
 		6BB23D9C18ABCD1A00F87704 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB23D9B18ABCD1A00F87704 /* main.m */; };
-		6BB23DA318ABCD1A00F87704 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BB23DA118ABCD1A00F87704 /* Main_iPhone.storyboard */; };
-		6BB23DA618ABCD1A00F87704 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BB23DA418ABCD1A00F87704 /* Main_iPad.storyboard */; };
 		6BB23DB518ABCD1A00F87704 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BB23DB418ABCD1A00F87704 /* XCTest.framework */; };
 		6BB23DB618ABCD1A00F87704 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BB23D8F18ABCD1A00F87704 /* Foundation.framework */; };
 		6BB23DB718ABCD1A00F87704 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BB23D9318ABCD1A00F87704 /* UIKit.framework */; };
@@ -242,6 +241,8 @@
 		6B1A387018AE812E00A8C65E /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		6B1A388618AF51EE00A8C65E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		6B1A388F18AF5D8000A8C65E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		6B8903A018B0DE02009BFB0F /* CDVLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDVLogger.h; sourceTree = "<group>"; };
+		6B8903A118B0DE02009BFB0F /* CDVLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDVLogger.m; sourceTree = "<group>"; };
 		6BAC94A518AE721000DC4A4D /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
 		6BB23D8C18ABCD1A00F87704 /* iCommerce.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCommerce.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BB23D8F18ABCD1A00F87704 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -250,8 +251,6 @@
 		6BB23D9718ABCD1A00F87704 /* iCommerce-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iCommerce-Info.plist"; sourceTree = "<group>"; };
 		6BB23D9B18ABCD1A00F87704 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6BB23D9D18ABCD1A00F87704 /* iCommerce-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iCommerce-Prefix.pch"; sourceTree = "<group>"; };
-		6BB23DA218ABCD1A00F87704 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		6BB23DA518ABCD1A00F87704 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		6BB23DB318ABCD1A00F87704 /* iCommerceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iCommerceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BB23DB418ABCD1A00F87704 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		6BB23DBC18ABCD1A00F87704 /* iCommerceTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iCommerceTests-Info.plist"; sourceTree = "<group>"; };
@@ -366,6 +365,7 @@
 		6B07B55F18AF980600ACB97D /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
+				6B89039F18B0DE02009BFB0F /* org.apache.cordova.console */,
 				6B07B56018AF980600ACB97D /* org.apache.cordova.battery-status */,
 				6B07B56318AF980600ACB97D /* org.apache.cordova.camera */,
 				6B07B56918AF980600ACB97D /* org.apache.cordova.contacts */,
@@ -627,6 +627,15 @@
 			path = Lib/ums;
 			sourceTree = "<group>";
 		};
+		6B89039F18B0DE02009BFB0F /* org.apache.cordova.console */ = {
+			isa = PBXGroup;
+			children = (
+				6B8903A018B0DE02009BFB0F /* CDVLogger.h */,
+				6B8903A118B0DE02009BFB0F /* CDVLogger.m */,
+			);
+			path = org.apache.cordova.console;
+			sourceTree = "<group>";
+		};
 		6BB23D8318ABCD1900F87704 = {
 			isa = PBXGroup;
 			children = (
@@ -695,8 +704,6 @@
 				6B07B55F18AF980600ACB97D /* Plugins */,
 				6B07B59918AF980600ACB97D /* Resources */,
 				6B07B53518AF97EE00ACB97D /* Classes */,
-				6BB23DA118ABCD1A00F87704 /* Main_iPhone.storyboard */,
-				6BB23DA418ABCD1A00F87704 /* Main_iPad.storyboard */,
 				6BB23D9618ABCD1A00F87704 /* Supporting Files */,
 			);
 			path = iCommerce;
@@ -840,7 +847,6 @@
 				6B07B5C418AF980600ACB97D /* Localizable.strings in Resources */,
 				6B07B5EA18AF986800ACB97D /* README.md in Resources */,
 				6B07B5CD18AF980600ACB97D /* Default-Portrait@2x~ipad.png in Resources */,
-				6BB23DA618ABCD1A00F87704 /* Main_iPad.storyboard in Resources */,
 				6B07B5C318AF980600ACB97D /* CDVNotification.bundle in Resources */,
 				6B07B55818AF97EF00ACB97D /* OnlineWallViewController.xib in Resources */,
 				6B07B5EB18AF986800ACB97D /* DomobOfferWallBundle.bundle in Resources */,
@@ -860,7 +866,6 @@
 				6B07B55618AF97EF00ACB97D /* OfferManageViewController.xib in Resources */,
 				6B07B5CE18AF980600ACB97D /* Default-Portrait~ipad.png in Resources */,
 				6B07B55E18AF97EF00ACB97D /* VideoOfferWallViewController.xib in Resources */,
-				6BB23DA318ABCD1A00F87704 /* Main_iPhone.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -910,6 +915,7 @@
 				6B07B55C18AF97EF00ACB97D /* Toast+UIView.m in Sources */,
 				6B07B5C018AF980600ACB97D /* CDVSplashScreen.m in Sources */,
 				6B07B5B418AF980600ACB97D /* CDVAccelerometer.m in Sources */,
+				6B8903A218B0DE02009BFB0F /* CDVLogger.m in Sources */,
 				6B07B55218AF97EF00ACB97D /* FirstViewController.m in Sources */,
 				6B07B55718AF97EF00ACB97D /* OnlineWallViewController.m in Sources */,
 				6B07B55318AF97EF00ACB97D /* MainMenuViewController.m in Sources */,
@@ -950,22 +956,6 @@
 				6B07B5A518AF980600ACB97D /* se */,
 			);
 			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		6BB23DA118ABCD1A00F87704 /* Main_iPhone.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6BB23DA218ABCD1A00F87704 /* Base */,
-			);
-			name = Main_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		6BB23DA418ABCD1A00F87704 /* Main_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6BB23DA518ABCD1A00F87704 /* Base */,
-			);
-			name = Main_iPad.storyboard;
 			sourceTree = "<group>";
 		};
 		6BB23DBD18ABCD1A00F87704 /* InfoPlist.strings */ = {
