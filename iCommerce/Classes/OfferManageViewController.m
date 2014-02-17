@@ -8,6 +8,7 @@
 
 #import "OfferManageViewController.h"
 #import "DMDemoConstants.h"
+#import "AppDelegate.h"
 
 @interface OfferManageViewController ()
 
@@ -19,6 +20,7 @@
 @synthesize statusLabel = _statusLabel;
 @synthesize pointsInput = _pointsInput;
 
+
 @synthesize comsumeOWButton;
 @synthesize checkPointOWButton;
 
@@ -26,8 +28,8 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        
-        _offerWallManager = [[DMOfferWallManager alloc] initWithPublishId:PUBLISHER_ID userId:AGENT_ID];
+         AppDelegate *myDelegate = [[UIApplication sharedApplication] delegate];
+        _offerWallManager = [[DMOfferWallManager alloc] initWithPublishId:PUBLISHER_ID userId:myDelegate.userId];
         _offerWallManager.delegate = self;
     }
     return self;

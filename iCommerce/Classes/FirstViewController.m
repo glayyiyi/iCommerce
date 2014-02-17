@@ -23,10 +23,10 @@ CDVViewController* cdvViewController ;
 
 
     [super viewDidLoad];
-     cdvViewController = [CDVViewController new];
-     //viewController.startPage = @"http://www.appcn100.com/mobile";
-    cdvViewController.wwwFolderName = @"www";
-    cdvViewController.startPage = @"index.html";
+    cdvViewController = [CDVViewController new];
+    cdvViewController.startPage = @"http://www.appcn100.com/mobile";
+    //cdvViewController.wwwFolderName = @"www";
+    //cdvViewController.startPage = @"index.html";
     [UMSAgent checkUpdate];
     
         
@@ -39,7 +39,7 @@ CDVViewController* cdvViewController ;
 {
     // View defaults to full size.  If you want to customize the view's size, or its subviews (e.g. webView),
     // you can do so here.
-    
+    self.navigationController.navigationBarHidden = YES;
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
     //viewController.view.frame = CGRectMake(0, 0, 320, 480);
     cdvViewController.view.frame =screenBounds;

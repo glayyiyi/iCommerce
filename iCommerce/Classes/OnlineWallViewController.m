@@ -10,6 +10,7 @@
 #import "DMDemoConstants.h"
 #import "Toast+UIView.h"
 #import <QuartzCore/QuartzCore.h>
+#import "AppDelegate.h"
 
 
 @interface OnlineWallViewController ()
@@ -24,7 +25,9 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        _offerWallController = [[DMOfferWallViewController alloc] initWithPublisherID:PUBLISHER_ID andUserID:AGENT_ID];
+        AppDelegate *myDelegate = [[UIApplication sharedApplication] delegate];
+        
+        _offerWallController = [[DMOfferWallViewController alloc] initWithPublisherID:PUBLISHER_ID andUserID:myDelegate.userId];
         // !!!:重要：如果需要禁用应用内下载，请将此值设置为YES。
         _offerWallController.disableStoreKit = NO;
     

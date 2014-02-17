@@ -11,6 +11,7 @@
 #import "Toast+UIView.h"
 #import "DMAppDelegate.h"
 #import "DMOfferWallManager.h"
+#import "AppDelegate.h"
 
 @interface OWInterstitialViewController ()
 
@@ -22,10 +23,13 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        _offerWallController = [[DMOfferWallViewController alloc] initWithPublisherID:PUBLISHER_ID andUserID:AGENT_ID];
+        AppDelegate *myDelegate = [[UIApplication sharedApplication] delegate];
+        _offerWallController = [[DMOfferWallViewController alloc] initWithPublisherID:PUBLISHER_ID andUserID:myDelegate.userId];
         _offerWallController.delegate = self;
         // !!!:重要：如果需要禁用应用内下载，请将此值设置为YES。
         _offerWallController.disableStoreKit = NO;
+        
+        
         
     }
     return self;
@@ -47,16 +51,17 @@
         self.presentInlineBtn.layer.borderColor = [[UIColor blackColor] CGColor];
         self.presentInlineBtn.layer.borderWidth = 1;
     }
-    //[self loadOWInterstitital:nil];
     
+    
+   [self loadOWInterstitital:nil];
     
     
 }
     
     - (void)viewWillAppear:(BOOL)animated
     {
-         //[self presentOWInterstitital:nil];
         
+         [self.view removeFromSuperview];
         [super viewWillAppear:animated];
     }
     
@@ -163,6 +168,8 @@
     NSLog(@"dmOfferWallInterstitialSuccessToLoadAd");
     self.presentInlineBtn.hidden = NO;
     [self.view makeToast:@"Offer Wall List Loading Finished."];
+    
+     [self presentOWInterstitital:nil];
 }
 
 // 当积分墙插屏广告加载失败后，回调该方法

@@ -8,6 +8,7 @@
 
 #import "VideoOfferWallViewController.h"
 #import "DMDemoConstants.h"
+#import "AppDelegate.h"
 
 @interface VideoOfferWallViewController ()
 
@@ -19,8 +20,8 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        
-        _videoOfferController = [[DMVideoViewController alloc] initWithPublisherID:PUBLISHER_ID andUserID:AGENT_ID];
+        AppDelegate *myDelegate = [[UIApplication sharedApplication] delegate];
+        _videoOfferController = [[DMVideoViewController alloc] initWithPublisherID:PUBLISHER_ID andUserID:myDelegate.userId];
         _videoOfferController.delegate = self;
     }
     return self;
@@ -36,6 +37,13 @@
         self.presentOWButton.layer.borderWidth = 1;
     }
     [_videoOfferController presentVideoAdView];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    
+    [self.view removeFromSuperview];
+    [super viewDidAppear:true];
 }
 
 - (void)didReceiveMemoryWarning

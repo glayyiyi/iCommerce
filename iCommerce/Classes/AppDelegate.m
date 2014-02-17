@@ -14,12 +14,14 @@
 
 @implementation AppDelegate
 @synthesize window=_window,viewController = _viewController;
+@synthesize userId;
 
 //CDVViewController* cdvViewController ;
 
 - (void)dealloc
 {
     [_window release];
+    [_viewController release];
     [super dealloc];
 }
 
@@ -59,12 +61,6 @@
     
     
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-    
-//    cdvViewController = [CDVViewController new];
-//    //viewController.startPage = @"http://www.appcn100.com/mobile";
-//    cdvViewController.wwwFolderName = @"www";
-//    cdvViewController.startPage = @"index.html";
-//    //[UMSAgent checkUpdate];
 
     self.viewController = [[FirstViewController alloc] init];
     

@@ -117,19 +117,19 @@ static NSString *kCellIdentifier = @"MyIdentifier";
 //        NSException *e = [NSException exceptionWithName:@"Null reference" reason:@"UIKit.framework.Exception" userInfo:nil];
 //        @throw e;
 
-         [[Countly sharedInstance] recordEvent:@"点击菜单" segmentation:@{@"类型" : @"列表积分墙",@"用户":AGENT_ID} count:1];
+         //[[Countly sharedInstance] recordEvent:@"点击菜单" segmentation:@{@"类型" : @"列表积分墙",@"用户":AGENT_ID} count:1];
         controller = [[OnlineWallViewController alloc] initWithNibName:@"OnlineWallViewController" bundle:nil];
     }
     else if (indexPath.row == 1) {
-         [[Countly sharedInstance] recordEvent:@"点击菜单" segmentation:@{@"类型" : @"视频积分墙",@"用户":AGENT_ID} count:1];
+         //[[Countly sharedInstance] recordEvent:@"点击菜单" segmentation:@{@"类型" : @"视频积分墙",@"用户":AGENT_ID} count:1];
         controller = [[VideoOfferWallViewController alloc] initWithNibName:@"VideoOfferWallViewController" bundle:nil];
     }
     else if (indexPath.row == 2) {
-        [[Countly sharedInstance] recordEvent:@"点击菜单" segmentation:@{@"类型" : @"插屏积分墙",@"用户":AGENT_ID} count:1];
+        //[[Countly sharedInstance] recordEvent:@"点击菜单" segmentation:@{@"类型" : @"插屏积分墙",@"用户":AGENT_ID} count:1];
         controller = [[OWInterstitialViewController alloc] initWithNibName:@"OWInterstitialViewController" bundle:nil];
     }
     else if (indexPath.row == 3) {
-         [[Countly sharedInstance] recordEvent:@"点击菜单" segmentation:@{@"类型" : @"积分管理",@"用户":AGENT_ID} count:1];
+        // [[Countly sharedInstance] recordEvent:@"点击菜单" segmentation:@{@"类型" : @"积分管理",@"用户":AGENT_ID} count:1];
         
         controller = [[OfferManageViewController alloc] initWithNibName:@"OfferManageViewController" bundle:nil];
     }

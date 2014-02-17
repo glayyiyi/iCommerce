@@ -16,4 +16,9 @@
 
 @property (strong, nonatomic) FirstViewController *viewController;
 
+@property BOOL isLogin;
+
+@property (nonatomic, retain) NSString *userId;
+
+
 @end
