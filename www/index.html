@@ -1,96 +1,122 @@
 <!DOCTYPE html>
 <html>
-<!--
-#
-# Licensed to the Apache Software Foundation (ASF) under one
-# or more contributor license agreements.  See the NOTICE file
-# distributed with this work for additional information
-# regarding copyright ownership.  The ASF licenses this file
-# to you under the Apache License, Version 2.0 (the
-# "License"); you may not use this file except in compliance
-# with the License.  You may obtain a copy of the License at
-# 
-# http://www.apache.org/licenses/LICENSE-2.0
-# 
-# Unless required by applicable law or agreed to in writing,
-# software distributed under the License is distributed on an
-# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-#  KIND, either express or implied.  See the License for the
-# specific language governing permissions and limitations
-# under the License.
-#
--->
-  <head>
-  <title></title>
-  
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
-	<meta charset="utf-8">
-
-
-	<!-- iPad/iPhone specific css below, add after your main css >
-	<link rel="stylesheet" media="only screen and (max-device-width: 1024px)" href="ipad.css" type="text/css" />		
-	<link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="iphone.css" type="text/css" />		
-	-->
-	<!-- If your application is targeting iOS BEFORE 4.0 you MUST put json2.js from http://www.JSON.org/json2.js into your www directory and include it here -->
-	<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
-    <script type="text/javascript">
-
-
-	// If you want to prevent dragging, uncomment this section
-	/*
-	function preventBehavior(e) 
-	{ 
-      e.preventDefault(); 
-    };
-	document.addEventListener("touchmove", preventBehavior, false);
-	*/
-	
-	/* If you are supporting your own protocol, the var invokeString will contain any arguments to the app launch.
-	see http://iphonedevelopertips.com/cocoa/launching-your-own-application-via-a-custom-url-scheme.html
-	for more details -jm */
-	/*
-	function handleOpenURL(url)
-	{
-		// TODO: do something with the url passed in.
-	}
-	*/
-	
-	function onBodyLoad()
-	{		
-		document.addEventListener("deviceready", onDeviceReady, false);
-	}
-	
-	/* When this function is called, Cordova has been initialized and is ready to roll */
-	/* If you are supporting your own protocol, the var invokeString will contain any arguments to the app launch.
-	see http://iphonedevelopertips.com/cocoa/launching-your-own-application-via-a-custom-url-scheme.html
-	for more details -jm */
-	function onDeviceReady()
-	{
-    // Used by unit tests to tell when the page is loaded.
-    window.pageIsLoaded = true;
-    alert("Go Go!");
-    navigator.notification.alert(
-                                 'You are the winner!',  // message
-                                 alertDismissed,         // callback
-                                 'Game Over',            // title
-                                 'Done'                  // buttonName
-                                 );
-
-		// do your thing!
-		console.log("Cordova is working")
-	}
-    function alertDismissed() {
-        // do something
-    }
-
-    
-    </script>
-  </head>
-  <body onload="onBodyLoad()">
-	<h1>Hey, it's Cordova!</h1>
-	<ol>
-		<li>Check your console log for any white-list rejection errors.</li>
-		<li>Add your allowed <strong>hosts</strong> in config.xml as access tags and set the origin attribute. (wildcards OK, don't enter the URL scheme)</li>
-	</ol>
-  </body>
+    <!--
+     #
+     # Licensed to the Apache Software Foundation (ASF) under one
+     # or more contributor license agreements.  See the NOTICE file
+     # distributed with this work for additional information
+     # regarding copyright ownership.  The ASF licenses this file
+     # to you under the Apache License, Version 2.0 (the
+     # "License"); you may not use this file except in compliance
+     # with the License.  You may obtain a copy of the License at
+     #
+     # http://www.apache.org/licenses/LICENSE-2.0
+     #
+     # Unless required by applicable law or agreed to in writing,
+     # software distributed under the License is distributed on an
+     # "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     #  KIND, either express or implied.  See the License for the
+     # specific language governing permissions and limitations
+     # under the License.
+     #
+     -->
+    <head>
+        <title></title>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
+        <meta charset="utf-8">
+            
+            
+            <!-- iPad/iPhone specific css below, add after your main css >
+             <link rel="stylesheet" media="only screen and (max-device-width: 1024px)" href="ipad.css" type="text/css" />
+             <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="iphone.css" type="text/css" />
+             -->
+            <!-- If your application is targeting iOS BEFORE 4.0 you MUST put json2.js from http://www.JSON.org/json2.js into your www directory and include it here -->
+            <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+            <script type="text/javascript">
+                
+                
+                // If you want to prevent dragging, uncomment this section
+                /*
+                 function preventBehavior(e)
+                 {
+                 e.preventDefault();
+                 };
+                 document.addEventListener("touchmove", preventBehavior, false);
+                 */
+            
+            /* If you are supporting your own protocol, the var invokeString will contain any arguments to the app launch.
+             see http://iphonedevelopertips.com/cocoa/launching-your-own-application-via-a-custom-url-scheme.html
+             for more details -jm */
+            /*
+             function handleOpenURL(url)
+             {
+             // TODO: do something with the url passed in.
+             }
+             */
+            
+            function onBodyLoad()
+            {
+                document.addEventListener("deviceready", onDeviceReady, false);
+            }
+            
+            /* When this function is called, Cordova has been initialized and is ready to roll */
+            /* If you are supporting your own protocol, the var invokeString will contain any arguments to the app launch.
+             see http://iphonedevelopertips.com/cocoa/launching-your-own-application-via-a-custom-url-scheme.html
+             for more details -jm */
+            function onDeviceReady()
+            {
+                // Used by unit tests to tell when the page is loaded.
+                //window.pageIsLoaded = true;
+                //alert("Go Go!");
+                //location.href='http://www.appcn100.com/cms/iagent';
+                navigator.notification.alert(
+                                             '欢迎使用果子助手!',  // message
+                                             alertDismissed,         // callback
+                                             '欢迎'+device.version+device.uuid ,            // title
+                                             '确认'                  // buttonName
+                                             );
+                                             
+                                             // do your thing!
+                                             console.log("Cordova is working")
+            }
+            function alertDismissed() {
+                //navigator.notification.beep(3);
+                //navigator.notification.vibrate(2000);
+                //showPrompt();
+                //location.href='http://www.appcn100.com/cms/iagent';
+            }
+            
+            function goHome() {
+                //navigator.notification.beep(3);
+                //navigator.notification.vibrate(2000);
+                //showPrompt();
+                location.href='http://www.appcn100.com/cms/iagent';
+            }
+            
+            function showPrompt() {
+                navigator.notification.login(
+                                             '请输入用户名和密码',  // message
+                                             onPrompt,                  // callback to invoke
+                                             '登陆',            // title
+                                             ['确认','取消']            // buttonLabels
+                                                              // defaultText
+                                             );
+            }
+            
+            function onPrompt(results) {
+                alert("You selected button number " + results.buttonIndex + " and entered " + results.input1+"==="+results.input2);
+            }
+            
+            
+            
+                </script>
+            </head>
+    <body onload="onBodyLoad()">
+        <h1>首页</h1>
+        <ol>
+            <li><button onclick="goHome();">果子助手</button></li>
+            <li><button onclick="showPrompt();">下载</button></li>
+        </ol>
+    </body>
 </html>

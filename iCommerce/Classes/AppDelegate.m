@@ -9,8 +9,19 @@
 #import "AppDelegate.h"
 #import "Countly.h"
 #import <Cordova/CDVPlugin.h>
+#import <Cordova/CDVViewController.h>
+
 
 @implementation AppDelegate
+@synthesize window=_window,viewController = _viewController;
+
+//CDVViewController* cdvViewController ;
+
+- (void)dealloc
+{
+    [_window release];
+    [super dealloc];
+}
 
 - (id)init
 {
@@ -39,12 +50,30 @@
     // Override point for customization after application launch.
     
     
+    
     [[Countly sharedInstance] start:@"4b5cc5216a7ea9894414d968bd368716c05ddb30" withHost:@"http://www.appcn100.com:8000"];
     
     [UMSAgent bindUserIdentifier:@"wbtech"];
     [UMSAgent startWithAppKey:@"f0721e56613034d04e427727a1d06b85" ReportPolicy:REALTIME ServerURL:@"http://www.appcn100.com/razor/web/index.php?"];
 
     
+    
+    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    
+//    cdvViewController = [CDVViewController new];
+//    //viewController.startPage = @"http://www.appcn100.com/mobile";
+//    cdvViewController.wwwFolderName = @"www";
+//    cdvViewController.startPage = @"index.html";
+//    //[UMSAgent checkUpdate];
+
+    self.viewController = [[FirstViewController alloc] init];
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.viewController];
+    self.window.rootViewController = navController;
+    [navController setNavigationBarHidden:YES animated:NO];
+    [navController release];
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
      self.window.autoresizesSubviews = YES;
     return YES;
 }

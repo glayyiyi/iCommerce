@@ -16,18 +16,19 @@
 
 @implementation FirstViewController
 
-CDVViewController* viewController ;
+CDVViewController* cdvViewController ;
 
 - (void)viewDidLoad
 {
 
 
     [super viewDidLoad];
-     viewController = [CDVViewController new];
-     viewController.startPage = @"http://www.appcn100.com/mobile";
-    //viewController.wwwFolderName = @"www";
-    //viewController.startPage = @"index.html";
+     cdvViewController = [CDVViewController new];
+     //viewController.startPage = @"http://www.appcn100.com/mobile";
+    cdvViewController.wwwFolderName = @"www";
+    cdvViewController.startPage = @"index.html";
     [UMSAgent checkUpdate];
+    
         
 	// Do any additional setup after loading the view, typically from a nib.
 
@@ -41,29 +42,29 @@ CDVViewController* viewController ;
     
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
     //viewController.view.frame = CGRectMake(0, 0, 320, 480);
-    viewController.view.frame =screenBounds;
-    [self.view addSubview:viewController.view];
-    [viewController.webView reload];
+    cdvViewController.view.frame =screenBounds;
+    
+    [self.view addSubview:cdvViewController.view];
+    [cdvViewController.webView reload];
     
     [super viewWillAppear:animated];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    if ([viewController.webView isLoading])
-        [viewController.webView stopLoading];
+    if ([cdvViewController.webView isLoading])
+        [cdvViewController.webView stopLoading];
     // [viewController.webView stringByEvaluatingJavaScriptFromString:@"destroy();"];
-    
     [super viewWillDisappear:animated];
    
 }
 
 - (void)dealloc {
     
-    viewController.webView.delegate = nil;
-    viewController.webView = nil;
-    [viewController release];
-    viewController=nil;
+    //viewController.webView.delegate = nil;
+    //viewController.webView = nil;
+    //[viewController release];
+    //viewController=nil;
     [super dealloc];
 }
 

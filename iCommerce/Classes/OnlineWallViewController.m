@@ -43,7 +43,17 @@
         self.presentOWButton.layer.borderWidth = 1;
     }
     [_offerWallController presentOfferWall];
+    
 }
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    
+    [self.view removeFromSuperview];
+    [super viewDidAppear:true];
+}
+
+
 
 - (void)didReceiveMemoryWarning
 {

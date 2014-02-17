@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "UMSAgent.h"
+#import "FirstViewController.h"
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+
+@property (strong, nonatomic) FirstViewController *viewController;
 
 @end

@@ -135,11 +135,12 @@ static NSString *kCellIdentifier = @"MyIdentifier";
     }
 
     if (controller) {
-//        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self];
-//        
-//        [navController pushViewController:controller animated:YES];
         
-         [self.view addSubview:controller.view];
+        [self.navigationController pushViewController:controller animated:YES];
+        [controller release];
+        //[self.view removeFromSuperview];
+        
+         //[self.view addSubview:controller.view];
        
     }
 }

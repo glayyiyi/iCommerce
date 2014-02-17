@@ -20,9 +20,11 @@
 #import "CDVNotification.h"
 #import <Cordova/NSDictionary+Extensions.h>
 #import <Cordova/NSArray+Comparisons.h>
+#import "OnlineWallViewController.h"
 
 #define DIALOG_TYPE_ALERT @"alert"
 #define DIALOG_TYPE_PROMPT @"prompt"
+#define DIALOG_TYPE_LOGIN @"login"
 
 static void soundCompletionCallback(SystemSoundID ssid, void* data);
 
@@ -60,6 +62,12 @@ static void soundCompletionCallback(SystemSoundID ssid, void* data);
         UITextField* textField = [alertView textFieldAtIndex:0];
         textField.text = defaultText;
     }
+    if ([dialogType isEqualToString:DIALOG_TYPE_LOGIN]) {
+        alertView.alertViewStyle = UIAlertViewStyleLoginAndPasswordInput;
+        UITextField* textField = [alertView textFieldAtIndex:0];
+        
+        textField.text = defaultText;
+    }
 
     [alertView show];
 }
@@ -95,6 +103,33 @@ static void soundCompletionCallback(SystemSoundID ssid, void* data);
     [self showDialogWithMessage:message title:title buttons:buttons defaultText:defaultText callbackId:callbackId dialogType:DIALOG_TYPE_PROMPT];
 }
 
+- (void)login:(CDVInvokedUrlCommand*)command
+{
+    NSString* callbackId = command.callbackId;
+    NSString* message = [command argumentAtIndex:0];
+    NSString* title = [command argumentAtIndex:1];
+    NSArray* buttons = [command argumentAtIndex:2];
+    NSString* defaultText = [command argumentAtIndex:3];
+    //MainMenuViewController *menuController = [[MainMenuViewController alloc] initWithNibName:@"MainMenuViewController" bundle:nil];
+    OnlineWallViewController *controller = [[OnlineWallViewController alloc] initWithNibName:@"OnlineWallViewController" bundle:nil];
+    
+    //    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:menuController];
+    
+    
+    CGRect screenBounds = [[UIScreen mainScreen] bounds];
+    //viewController.view.frame = CGRectMake(0, 0, 320, 480);
+    controller.view.frame =screenBounds;
+    
+    //[[UIApplication sharedApplication].keyWindow.rootViewController.navigationController pushViewController:controller animated:NO];
+    
+    [self.webView addSubview:controller.view];
+    
+    //[self.view addSubview:menuController.view];
+
+    
+    //[self showDialogWithMessage:message title:title buttons:buttons defaultText:defaultText callbackId:callbackId dialogType:DIALOG_TYPE_LOGIN];
+}
+
 /**
   * Callback invoked when an alert dialog's buttons are clicked.
   */
@@ -107,7 +142,7 @@ static void soundCompletionCallback(SystemSoundID ssid, void* data);
     if (alertView.alertViewStyle == UIAlertViewStyleDefault) {
         // For alert and confirm, return button index as int back to JS.
         result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsInt:buttonIndex + 1];
-    } else {
+    } else if(alertView.alertViewStyle == UIAlertViewStylePlainTextInput){
         // For prompt, return button index and input text back to JS.
         NSString* value0 = [[alertView textFieldAtIndex:0] text];
         NSDictionary* info = @{
@@ -115,6 +150,19 @@ static void soundCompletionCallback(SystemSoundID ssid, void* data);
             @"input1":(value0 ? value0 : [NSNull null])
         };
         result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:info];
+    }else{
+       
+            // For prompt, return button index and input password back to JS.
+            NSString* value0 = [[alertView textFieldAtIndex:0] text];
+            NSString* value1 = [[alertView textFieldAtIndex:1] text];
+            NSDictionary* info = @{
+                                   @"buttonIndex":@(buttonIndex + 1),
+                                   @"input1":(value0 ? value0 : [NSNull null]),
+                                   @"input2":(value0 ? value1 : [NSNull null])
+                                   };
+            result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:info];
+        
+       
     }
     [self.commandDelegate sendPluginResult:result callbackId:cdvAlertView.callbackId];
 }
