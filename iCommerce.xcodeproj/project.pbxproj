@@ -71,7 +71,6 @@
 		6B1A386B18AE80AF00A8C65E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1A386A18AE80AF00A8C65E /* CFNetwork.framework */; };
 		6B1A386D18AE80E200A8C65E /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1A386C18AE80E200A8C65E /* OpenAL.framework */; };
 		6B1A387118AE812E00A8C65E /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1A387018AE812E00A8C65E /* MediaPlayer.framework */; };
-		6B1A388718AF51EE00A8C65E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1A388618AF51EE00A8C65E /* StoreKit.framework */; };
 		6B8903A218B0DE02009BFB0F /* CDVLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B8903A118B0DE02009BFB0F /* CDVLogger.m */; };
 		6BAC94A618AE721000DC4A4D /* www in Resources */ = {isa = PBXBuildFile; fileRef = 6BAC94A518AE721000DC4A4D /* www */; };
 		6BB23D9018ABCD1A00F87704 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BB23D8F18ABCD1A00F87704 /* Foundation.framework */; };
@@ -96,13 +95,14 @@
 		6BB23E3918ABD1C400F87704 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BB23E2518ABD1C300F87704 /* AddressBook.framework */; };
 		6BB23E3A18ABD1C400F87704 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BB23E2618ABD1C300F87704 /* AssetsLibrary.framework */; };
 		6BB23E3B18ABD1C400F87704 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BB23E2718ABD1C300F87704 /* CoreMedia.framework */; };
-		6BB23E3C18ABD1C400F87704 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BB23E2818ABD1C300F87704 /* AudioToolbox.framework */; };
 		6BB23E3D18ABD1C400F87704 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BB23E2918ABD1C300F87704 /* AVFoundation.framework */; };
 		6BB23E3E18ABD1C400F87704 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BB23E2A18ABD1C300F87704 /* CoreLocation.framework */; };
 		6BB23E3F18ABD1C400F87704 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BB23E2B18ABD1C300F87704 /* MobileCoreServices.framework */; };
 		6BB23E4018ABD1C400F87704 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BB23E2C18ABD1C300F87704 /* SystemConfiguration.framework */; };
 		6BB23E4118ABD1C400F87704 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BB23E2D18ABD1C300F87704 /* AddressBookUI.framework */; };
 		6BB23E4218ABD1C400F87704 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BB23E2E18ABD1C300F87704 /* CoreGraphics.framework */; };
+		6BB5875518B3CE1100593688 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BB5875418B3CE1100593688 /* StoreKit.framework */; };
+		6BB5875718B3CE8100593688 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BB5875618B3CE8100593688 /* AudioToolbox.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -239,7 +239,6 @@
 		6B1A386A18AE80AF00A8C65E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		6B1A386C18AE80E200A8C65E /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		6B1A387018AE812E00A8C65E /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		6B1A388618AF51EE00A8C65E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		6B1A388F18AF5D8000A8C65E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		6B8903A018B0DE02009BFB0F /* CDVLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDVLogger.h; sourceTree = "<group>"; };
 		6B8903A118B0DE02009BFB0F /* CDVLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDVLogger.m; sourceTree = "<group>"; };
@@ -269,13 +268,14 @@
 		6BB23E2518ABD1C300F87704 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		6BB23E2618ABD1C300F87704 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		6BB23E2718ABD1C300F87704 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
-		6BB23E2818ABD1C300F87704 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		6BB23E2918ABD1C300F87704 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		6BB23E2A18ABD1C300F87704 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		6BB23E2B18ABD1C300F87704 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		6BB23E2C18ABD1C300F87704 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		6BB23E2D18ABD1C300F87704 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		6BB23E2E18ABD1C300F87704 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		6BB5875418B3CE1100593688 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		6BB5875618B3CE8100593688 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -283,6 +283,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BB5875718B3CE8100593688 /* AudioToolbox.framework in Frameworks */,
+				6BB5875518B3CE1100593688 /* StoreKit.framework in Frameworks */,
 				6B07B61F18AFBC2B00ACB97D /* libDomobOfferWallSDK.a in Frameworks */,
 				6B07B61E18AFBC0E00ACB97D /* libUMSAgent.a in Frameworks */,
 				6B07B60118AF993000ACB97D /* libCordova.a in Frameworks */,
@@ -295,10 +297,8 @@
 				6BB23E4018ABD1C400F87704 /* SystemConfiguration.framework in Frameworks */,
 				6B1A386918AE809700A8C65E /* CoreMotion.framework in Frameworks */,
 				6B1A387118AE812E00A8C65E /* MediaPlayer.framework in Frameworks */,
-				6BB23E3C18ABD1C400F87704 /* AudioToolbox.framework in Frameworks */,
 				6BB23D9218ABCD1A00F87704 /* CoreGraphics.framework in Frameworks */,
 				6BB23E3518ABD1C400F87704 /* Security.framework in Frameworks */,
-				6B1A388718AF51EE00A8C65E /* StoreKit.framework in Frameworks */,
 				6BB23E2F18ABD1C300F87704 /* CoreData.framework in Frameworks */,
 				6BB23E4218ABD1C400F87704 /* CoreGraphics.framework in Frameworks */,
 				6BB23D9418ABCD1A00F87704 /* UIKit.framework in Frameworks */,
@@ -664,8 +664,9 @@
 		6BB23D8E18ABCD1A00F87704 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6BB5875618B3CE8100593688 /* AudioToolbox.framework */,
+				6BB5875418B3CE1100593688 /* StoreKit.framework */,
 				6B1A388F18AF5D8000A8C65E /* SenTestingKit.framework */,
-				6B1A388618AF51EE00A8C65E /* StoreKit.framework */,
 				6B1A387018AE812E00A8C65E /* MediaPlayer.framework */,
 				6B1A386C18AE80E200A8C65E /* OpenAL.framework */,
 				6B1A386A18AE80AF00A8C65E /* CFNetwork.framework */,
@@ -682,7 +683,6 @@
 				6BB23E2518ABD1C300F87704 /* AddressBook.framework */,
 				6BB23E2618ABD1C300F87704 /* AssetsLibrary.framework */,
 				6BB23E2718ABD1C300F87704 /* CoreMedia.framework */,
-				6BB23E2818ABD1C300F87704 /* AudioToolbox.framework */,
 				6BB23E2918ABD1C300F87704 /* AVFoundation.framework */,
 				6BB23E2A18ABD1C300F87704 /* CoreLocation.framework */,
 				6BB23E2B18ABD1C300F87704 /* MobileCoreServices.framework */,
@@ -789,7 +789,10 @@
 						DevelopmentTeam = VF6MRLMDZ3;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
-								enabled = 1;
+								enabled = 0;
+							};
+							com.apple.InterAppAudio = {
+								enabled = 0;
 							};
 						};
 					};
@@ -986,6 +989,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1004,6 +1008,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s";
@@ -1027,7 +1032,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Guangzhou Brave Lions Advertising Co.LTD";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1038,6 +1044,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1051,7 +1058,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_ENTITLEMENTS = iCommerce/iCommerce.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1098,9 +1104,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_ENTITLEMENTS = iCommerce/iCommerce.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Guangzhou Brave Lions Advertising Co.LTD";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
