@@ -28,10 +28,12 @@
 
 #import "AppDelegate.h"
 #import "Countly.h"
+#import "DMDemoConstants.h"
 
 #define DIALOG_TYPE_ALERT @"alert"
 #define DIALOG_TYPE_PROMPT @"prompt"
 #define DIALOG_TYPE_LOGIN @"login"
+#define DIALOG_TYPE_INVOKE @"invoke"
 
 static void soundCompletionCallback(SystemSoundID ssid, void* data);
 
@@ -74,6 +76,10 @@ static void soundCompletionCallback(SystemSoundID ssid, void* data);
         UITextField* textField = [alertView textFieldAtIndex:0];
         
         textField.text = defaultText;
+    }
+    if ([dialogType isEqualToString:DIALOG_TYPE_INVOKE]) {
+        
+        return;
     }
 
     [alertView show];
@@ -152,6 +158,131 @@ static void soundCompletionCallback(SystemSoundID ssid, void* data);
     if(buttons&&[buttons count]>0)
         [self showDialogWithMessage:message title:title buttons:buttons defaultText:defaultText callbackId:callbackId dialogType:DIALOG_TYPE_LOGIN];
 }
+
+- (void)invoke:(CDVInvokedUrlCommand*)command
+{
+    NSString* callbackId = command.callbackId;
+    NSString* message = [command argumentAtIndex:0];
+    NSString* title = [command argumentAtIndex:1];
+    NSArray* buttons = [command argumentAtIndex:2];
+    NSString* defaultText = [command argumentAtIndex:3];
+    
+    [[Countly sharedInstance] recordEvent:title segmentation:@{@"type" : message,@"user":defaultText} count:1];
+    
+    
+    AppDelegate *myDelegate = [[UIApplication sharedApplication] delegate];
+    myDelegate.userId = defaultText;
+    myDelegate.callbackId = callbackId;
+    
+ 
+    
+        CGRect screenBounds = [[UIScreen mainScreen] bounds];
+        if([message isEqual:@"OnlineWallViewController"]){
+            
+        DMOfferWallViewController *_offerWallController = [[DMOfferWallViewController alloc] initWithPublisherID:PUBLISHER_ID andUserID:myDelegate.userId];
+            // !!!:重要：如果需要禁用应用内下载，请将此值设置为YES。
+            _offerWallController.disableStoreKit = NO;
+
+        [_offerWallController presentOfferWall];
+        }
+        if([message isEqual:@"OfferManageViewController"]){
+            OfferManageViewController *controller = [[OfferManageViewController alloc] initWithNibName:message bundle:nil];
+            DMOfferWallManager *_offerWallManager = [[DMOfferWallManager alloc] initWithPublishId:PUBLISHER_ID userId:myDelegate.userId];
+            _offerWallManager.delegate = self;
+            
+            [_offerWallManager requestOnlinePointCheck];
+
+          
+        }
+        if([message isEqual:@"OWInterstitialViewController"]){
+            OWInterstitialViewController *controller = [[OWInterstitialViewController alloc] initWithNibName:message bundle:nil];
+            controller.view.frame =screenBounds;
+            [self.webView addSubview:controller.view];
+        }
+        if([message isEqual:@"VideoOfferWallViewController"]){
+            VideoOfferWallViewController *controller = [[VideoOfferWallViewController alloc] initWithNibName:message bundle:nil];
+            controller.view.frame =screenBounds;
+            [self.webView addSubview:controller.view];
+        }
+    }
+    
+    
+
+
+
+
+#pragma mark - public
+//- (IBAction)consume:(id)sender {
+//    [_offerWallManager requestOnlineConsumeWithPoint:[_pointsInput.text integerValue]];
+//    _statusLabel.text = @"请求消费中。。。";
+//}
+
+
+
+
+
+#pragma mark Point Check Callbacks
+// 积分查询成功之后，回调该接口，获取总积分和总已消费积分。
+- (void)offerWallDidFinishCheckPointWithTotalPoint:(NSInteger)totalPoint
+                             andTotalConsumedPoint:(NSInteger)consumed {
+    NSLog(@"offerWallDidFinishCheckPoint");
+
+    NSString* value0 = [NSString stringWithFormat:@"%d", totalPoint];
+    NSString* value1 = [NSString stringWithFormat:@"%d", consumed];
+    NSDictionary* info = @{
+                           @"buttonIndex":value1,
+                           @"input1":(value0 ? value0 : [NSNull null])
+                           };
+    CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:info];
+    
+    AppDelegate *myDelegate = [[UIApplication sharedApplication] delegate];
+    
+    [self.commandDelegate sendPluginResult:result callbackId:myDelegate.callbackId];
+}
+
+// 积分查询失败之后，回调该接口，返回查询失败的错误原因。
+- (void)offerWallDidFailCheckPointWithError:(NSError *)error {
+    NSLog(@"offerWallDidFailCheckPointWithError:%@", error);
+
+}
+
+#pragma mark Consume Callbacks
+// 消费请求正常应答后，回调该接口，并返回消费状态（成功或余额不足），以及总积分和总已消费积分。
+- (void)offerWallDidFinishConsumePointWithStatusCode:(DMOfferWallConsumeStatusCode)statusCode
+                                          totalPoint:(NSInteger)totalPoint
+                                  totalConsumedPoint:(NSInteger)consumed {
+    NSLog(@"offerWallDidFinishConsumePoint");
+    switch (statusCode) {
+        case DMOfferWallConsumeStatusCodeSuccess:
+            [self.webView makeToast:@"消费成功！"];
+            break;
+        case DMOfferWallConsumeStatusCodeInsufficient:
+            [self.webView makeToast:@"消费失败，余额不足！"];
+            break;
+        default:
+            break;
+    }
+    
+    NSString* value0 = [NSString stringWithFormat:@"%d", totalPoint];
+    NSString* value1 = [NSString stringWithFormat:@"%d", consumed];
+    NSDictionary* info = @{
+                           @"buttonIndex":value1,
+                           @"input1":(value0 ? value0 : [NSNull null])
+                          
+                           };
+    CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:info];
+    
+    AppDelegate *myDelegate = [[UIApplication sharedApplication] delegate];
+    [self.commandDelegate sendPluginResult:result callbackId:myDelegate.callbackId];
+
+}
+
+// 消费请求异常应答后，回调该接口，并返回异常的错误原因。
+- (void)offerWallDidFailConsumePointWithError:(NSError *)error {
+    NSLog(@"offerWallDidFailConsumePointWithError:%@", error);
+   
+}
+
 
 /**
   * Callback invoked when an alert dialog's buttons are clicked.

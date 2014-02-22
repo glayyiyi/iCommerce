@@ -19,6 +19,7 @@
 @property BOOL isLogin;
 
 @property (nonatomic, retain) NSString *userId;
+@property (nonatomic, retain) NSString *callbackId;
 
 
 @end

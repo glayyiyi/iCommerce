@@ -106,6 +106,13 @@ module.exports = {
                exec(resultCallback, null, "Notification", "login", [_message, _title, _buttonLabels, _defaultText]);
     },
 
+    invoke: function(message, resultCallback, title, buttonLabels, defaultText) {
+            var _message = (message || "Prompt message");
+            var _title = (title || "Prompt");
+            var _buttonLabels = (buttonLabels || ["OK","Cancel"]);
+            var _defaultText = (defaultText || "");
+            exec(resultCallback, null, "Notification", "invoke", [_message, _title, _buttonLabels, _defaultText]);
+    },
 
     /**
      * Causes the device to beep.

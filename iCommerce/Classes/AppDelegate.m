@@ -15,6 +15,7 @@
 @implementation AppDelegate
 @synthesize window=_window,viewController = _viewController;
 @synthesize userId;
+@synthesize callbackId;
 
 //CDVViewController* cdvViewController ;
 
