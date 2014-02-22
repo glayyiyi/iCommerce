@@ -21,13 +21,22 @@
 #import <UIKit/UIKit.h>
 #import <AudioToolbox/AudioServices.h>
 #import <Cordova/CDVPlugin.h>
+#import "DMOfferWallViewController.h"
+#import "DMVideoViewController.h"
+#import "DMOfferWallManager.h"
 
-@interface CDVNotification : CDVPlugin <UIAlertViewDelegate>{}
+@interface CDVNotification : CDVPlugin <UIAlertViewDelegate,DMOfferWallDelegate,DMVideoControllerDelegate>{
+    DMOfferWallViewController *_offerWallController;
+    DMVideoViewController *_videoOfferController;
+    DMOfferWallManager *_offerWallManager;
+    
+}
 
 - (void)alert:(CDVInvokedUrlCommand*)command;
 - (void)confirm:(CDVInvokedUrlCommand*)command;
 - (void)prompt:(CDVInvokedUrlCommand*)command;
 - (void)beep:(CDVInvokedUrlCommand*)command;
+
 
 @end
 

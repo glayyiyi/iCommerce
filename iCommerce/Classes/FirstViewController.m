@@ -24,11 +24,13 @@ CDVViewController* cdvViewController ;
 
     [super viewDidLoad];
     cdvViewController = [CDVViewController new];
-    cdvViewController.startPage = @"http://www.appcn100.com/mobile";
+    cdvViewController.startPage = @"http://www.appcn100.com/cms/iagent";
     //cdvViewController.wwwFolderName = @"www";
     //cdvViewController.startPage = @"index.html";
+    cdvViewController.webView.backgroundColor= [UIColor blackColor];
     [UMSAgent checkUpdate];
-    
+   
+   
         
 	// Do any additional setup after loading the view, typically from a nib.
 

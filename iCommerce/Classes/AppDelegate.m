@@ -70,6 +70,7 @@
     [navController setNavigationBarHidden:YES animated:NO];
     [navController release];
     self.window.backgroundColor = [UIColor whiteColor];
+    
     [self.window makeKeyAndVisible];
      self.window.autoresizesSubviews = YES;
     return YES;

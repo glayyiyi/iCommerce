@@ -167,58 +167,78 @@ static void soundCompletionCallback(SystemSoundID ssid, void* data);
     NSArray* buttons = [command argumentAtIndex:2];
     NSString* defaultText = [command argumentAtIndex:3];
     
-    [[Countly sharedInstance] recordEvent:title segmentation:@{@"type" : message,@"user":defaultText} count:1];
+    [[Countly sharedInstance] recordEvent:title segmentation:@{@"type" : message,@"command":title,@"user":defaultText} count:1];
     
     
     AppDelegate *myDelegate = [[UIApplication sharedApplication] delegate];
     myDelegate.userId = defaultText;
     myDelegate.callbackId = callbackId;
+     _offerWallManager = [[DMOfferWallManager alloc] initWithPublishId:PUBLISHER_ID userId:myDelegate.userId];
+     _videoOfferController = [[DMVideoViewController alloc] initWithPublisherID:PUBLISHER_ID andUserID:myDelegate.userId];
+     _offerWallController = [[DMOfferWallViewController alloc] initWithPublisherID:PUBLISHER_ID andUserID:myDelegate.userId];
     
- 
+    _offerWallManager.delegate = self;
+    _videoOfferController.delegate = self;
+    _offerWallController.delegate=self;
     
-        CGRect screenBounds = [[UIScreen mainScreen] bounds];
-        if([message isEqual:@"OnlineWallViewController"]){
-            
-        DMOfferWallViewController *_offerWallController = [[DMOfferWallViewController alloc] initWithPublisherID:PUBLISHER_ID andUserID:myDelegate.userId];
-            // !!!:重要：如果需要禁用应用内下载，请将此值设置为YES。
-            _offerWallController.disableStoreKit = NO;
+    // !!!:重要：如果需要禁用应用内下载，请将此值设置为YES。
+    _offerWallController.disableStoreKit = NO;
 
-        [_offerWallController presentOfferWall];
-        }
-        if([message isEqual:@"OfferManageViewController"]){
-            OfferManageViewController *controller = [[OfferManageViewController alloc] initWithNibName:message bundle:nil];
-            DMOfferWallManager *_offerWallManager = [[DMOfferWallManager alloc] initWithPublishId:PUBLISHER_ID userId:myDelegate.userId];
-            _offerWallManager.delegate = self;
+    //CGRect screenBounds = [[UIScreen mainScreen] bounds];
+        if([message isEqual:@"btn_wall_get"]){
+            
+       
+            [_offerWallController presentOfferWall];
+            
+        }else if([message isEqual:@"btn_wall_check"]){
+            
             
             [_offerWallManager requestOnlinePointCheck];
 
           
+        }else if([message isEqual:@"btn_wall_use"]){
+        
+            [_offerWallManager requestOnlineConsumeWithPoint:[defaultText integerValue]];
+        
+        
         }
-        if([message isEqual:@"OWInterstitialViewController"]){
-            OWInterstitialViewController *controller = [[OWInterstitialViewController alloc] initWithNibName:message bundle:nil];
-            controller.view.frame =screenBounds;
-            [self.webView addSubview:controller.view];
+        else if([message isEqual:@"btn_wall_inside"]){
+            //OWInterstitialViewController *controller = [[OWInterstitialViewController alloc] initWithNibName:@"OWInterstitialViewController" bundle:nil];
+            
+            //[self.webView addSubview:controller.view];
+            
+            [_offerWallController loadOfferWallInterstitial];
+            //[_offerWallController presentOfferWallInterstitial];
         }
-        if([message isEqual:@"VideoOfferWallViewController"]){
-            VideoOfferWallViewController *controller = [[VideoOfferWallViewController alloc] initWithNibName:message bundle:nil];
-            controller.view.frame =screenBounds;
-            [self.webView addSubview:controller.view];
+        else if([message isEqual:@"btn_wall_video"]){
+            
+            [_videoOfferController presentVideoAdView];
         }
     }
+
+
+#pragma mark OfferWall Interstitial
+// 当积分墙插屏广告被成功加载后，回调该方法
+- (void)dmOfferWallInterstitialSuccessToLoadAd:(DMOfferWallViewController *)dmOWInterstitial {
+    NSLog(@"dmOfferWallInterstitialSuccessToLoadAd");
+    [_offerWallController presentOfferWallInterstitial];
+}
+
+// 当积分墙插屏广告加载失败后，回调该方法
+- (void)dmOfferWallInterstitialFailToLoadAd:(DMOfferWallViewController *)dmOWInterstitial withError:(NSError *)err {
+    NSLog(@"dmOfferWallInterstitialFailToLoadAd:%@", err);
+   }
+
+// 当积分墙插屏广告要被呈现出来前，回调该方法
+- (void)dmOfferWallInterstitialWillPresentScreen:(DMOfferWallViewController *)dmOWInterstitial {
+    NSLog(@"dmOfferWallInterstitialWillPresentScreen");
+}
+
+// 当积分墙插屏广告被关闭后，回调该方法
+- (void)dmOfferWallInterstitialDidDismissScreen:(DMOfferWallViewController *)dmOWInterstitial {
+    NSLog(@"dmOfferWallInterstitialDidDismissScreen");
     
-    
-
-
-
-
-#pragma mark - public
-//- (IBAction)consume:(id)sender {
-//    [_offerWallManager requestOnlineConsumeWithPoint:[_pointsInput.text integerValue]];
-//    _statusLabel.text = @"请求消费中。。。";
-//}
-
-
-
+}
 
 
 #pragma mark Point Check Callbacks
@@ -252,27 +272,29 @@ static void soundCompletionCallback(SystemSoundID ssid, void* data);
                                           totalPoint:(NSInteger)totalPoint
                                   totalConsumedPoint:(NSInteger)consumed {
     NSLog(@"offerWallDidFinishConsumePoint");
-    switch (statusCode) {
-        case DMOfferWallConsumeStatusCodeSuccess:
-            [self.webView makeToast:@"消费成功！"];
-            break;
-        case DMOfferWallConsumeStatusCodeInsufficient:
-            [self.webView makeToast:@"消费失败，余额不足！"];
-            break;
-        default:
-            break;
-    }
-    
+    CDVPluginResult* result = nil;
+    AppDelegate *myDelegate = [[UIApplication sharedApplication] delegate];
     NSString* value0 = [NSString stringWithFormat:@"%d", totalPoint];
     NSString* value1 = [NSString stringWithFormat:@"%d", consumed];
     NSDictionary* info = @{
                            @"buttonIndex":value1,
                            @"input1":(value0 ? value0 : [NSNull null])
-                          
+                           
                            };
-    CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:info];
+
+    switch (statusCode) {
+        case DMOfferWallConsumeStatusCodeSuccess:
+            //消费成功
+             result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:info];
+            break;
+        case DMOfferWallConsumeStatusCodeInsufficient:
+            //余额不足
+             result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsDictionary:nil];
+            break;
+        default:
+            break;
+    }
     
-    AppDelegate *myDelegate = [[UIApplication sharedApplication] delegate];
     [self.commandDelegate sendPluginResult:result callbackId:myDelegate.callbackId];
 
 }
@@ -283,6 +305,30 @@ static void soundCompletionCallback(SystemSoundID ssid, void* data);
    
 }
 
+#pragma mark - DMOfferWallDelegate <NSObject>
+// 积分墙开始加载数据。
+// Offer wall starts to work.
+- (void)offerWallDidStartLoad {
+    NSLog(@"offerWallDidStartLoad");
+}
+
+// 积分墙加载完成。此方法实现中可进行积分墙入口Button显示等操作。
+// Load offer wall successfully. You can set your IBOutlet.hidden to NO in this callback.
+// This IBOutlet is the one which response to present OfferWall.
+- (void)offerWallDidFinishLoad {
+    NSLog(@"offerWallDidFinishLoad");
+}
+
+// 积分墙加载失败。可能的原因由error部分提供，例如网络连接失败、被禁用等。建议在此隐藏积分墙入口Button。
+// Failed to load offer wall. You should set THE IBOutlet.hidden to YES in this callback.
+- (void)offerWallDidFailLoadWithError:(NSError *)error {
+    NSLog(@"offerWallDidFailLoadWithError:%@", error);
+    
+}
+
+-(void)offerWallDidClosed{
+    NSLog(@"offer Wall closed!");
+   }
 
 /**
   * Callback invoked when an alert dialog's buttons are clicked.
