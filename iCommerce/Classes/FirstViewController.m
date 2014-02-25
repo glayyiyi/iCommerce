@@ -28,7 +28,7 @@ CDVViewController* cdvViewController ;
     //cdvViewController.wwwFolderName = @"www";
     //cdvViewController.startPage = @"index.html";
     cdvViewController.webView.backgroundColor= [UIColor blackColor];
-    [UMSAgent checkUpdate];
+    //[UMSAgent checkUpdate];
    
    
         
